@@ -18,18 +18,18 @@ export const Input = styled.input`
   background-color: #f7f7f7;
   width: 100%;
   padding: 8px;
-  border: 1px solid #ef7360;
+  border: ${(props) => `1px solid ${props.theme.colors.primary}`};
   border-radius: 8px;
   &:focus {
-    border: 3px solid #ef7360;
+    border: ${(props) => `3px solid ${props.theme.colors.primary}`};
     outline: none;
   }
 `;
 
 export const Button = styled.button`
-background-color: #ef7360;
+background-color: ${(props) => props.theme.colors.primary};
 border-radius: 18px;
-border: 2px solid #ef7360;
+border: ${(props) => `2px solid ${props.theme.colors.primary}`};
 color: #fff;
 margin-left: 1em;
 padding: 8px 20px;

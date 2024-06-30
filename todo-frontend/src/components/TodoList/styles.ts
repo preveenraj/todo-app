@@ -15,6 +15,12 @@ export const Row = styled.li`
   justify-content: space-between;
   padding: 8px 0;
   font-size: 1rem;
+
+  &:hover {
+    & > button {
+      visibility: visible;
+    }
+  }
 `;
 
 export const Text = styled.span<TextProperties>`
@@ -22,8 +28,14 @@ export const Text = styled.span<TextProperties>`
     text-transform: capitalize;
   }
 
-  color: ${(props) => (props.isCompleted ? "#f00" : "#000")};
+  color: ${(props) => (props.isCompleted ? props.theme.colors.textPrimary : props.theme.colors.textSecondary)};
   text-decoration: ${(props) => (props.isCompleted ? "line-through" : "none")};
 `;
 
-export const DeleteIcon = styled(Text)<{ onClick: (id: number) => void }>``;
+export const DeleteButton = styled.button<{ onClick: (id: number) => void }>`
+width: 20px;
+background-color: transparent;
+border: none;
+visibility: hidden;
+cursor: pointer;
+`;

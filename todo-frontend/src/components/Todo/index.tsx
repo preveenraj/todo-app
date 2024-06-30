@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "../../axios";
 
-import { Container } from "./styles";
+import { Container, Heading } from "./styles";
 import Form from "../Form";
 import TodoList from "../TodoList";
-import Key from "../Key";
-import Author from "../Author";
 
 
 const Todo = () => {
@@ -41,11 +39,9 @@ const Todo = () => {
 
   return (
     <Container>
-      <h2>List of Todos</h2>
+      <Heading>My Tasks</Heading>
       <Form input={input} setInput={setInput} addTodo={addTodo} />
       <TodoList todos={todos} fetchData={fetchData} />
-      <Key />
-      <Author/>
     </Container>
   );
 };
