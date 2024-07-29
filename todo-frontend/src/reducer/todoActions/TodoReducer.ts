@@ -1,5 +1,9 @@
 import { TodoState, TodoAction, ADD_TODO, DELETE_TODO, TOGGLE_TODO, SET_TODOS } from './types';
-
+const initialState: TodoState = {
+    todos: [],
+    loading: false,
+    error: null,
+  };
 
 const todoReducer = (state: TodoState, action: TodoAction): TodoState => {
     switch (action.type) {
@@ -29,5 +33,7 @@ const todoReducer = (state: TodoState, action: TodoAction): TodoState => {
             return state;
     }
 };
+
+todoReducer.initialState = initialState;
 
 export default todoReducer;

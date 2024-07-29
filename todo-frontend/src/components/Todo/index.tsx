@@ -4,18 +4,13 @@ import axios from "../../axios";
 import { Container, Heading } from "./styles";
 import Form from "../Form";
 import TodoList from "../TodoList";
-import todoReducer from "../../reducer/TodoReducer";
-import { ADD_TODO, SET_TODOS, TodoState } from "../../reducer/types";
+import todoReducer from "../../reducer/todoActions/TodoReducer";
+import { ADD_TODO, SET_TODOS } from "../../reducer/todoActions/types";
 
 const Todo = () => {
   const [input, setInput] = useState("");
 
-  const initialState: TodoState = {
-    todos: [],
-    loading: false,
-    error: null,
-  };
-  const [state, dispatch] = useReducer(todoReducer, initialState);
+  const [state, dispatch] = useReducer(todoReducer, todoReducer.initialState);
 
   const todos = state.todos;
 
@@ -36,10 +31,10 @@ const Todo = () => {
         title: input,
         completed: false,
       };
-      const { data } = await axios.post("/todos", todoToAdd);
+      const { data: todoAdded } = await axios.post("/todos", todoToAdd);
       dispatch({
         type: ADD_TODO,
-        payload: todoToAdd,
+        payload: todoAdded,
       });
       setInput("");
     } catch (error) {
@@ -51,9 +46,15 @@ const Todo = () => {
     fetchData();
   }, []);
 
+  const handleLogOut = () => {
+    localStorage.removeItem("user");
+    window.location.reload();
+  }
+
   return (
     <Container>
       <Heading>My Tasks</Heading>
+      <button onClick={handleLogOut}>Log Out</button>
       <Form input={input} setInput={setInput} addTodo={addTodo} />
       <TodoList todos={todos} fetchData={fetchData} />
     </Container>

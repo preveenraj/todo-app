@@ -1,6 +1,9 @@
+import { useReducer } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import Author from "./components/Author";
 import Todo from "./components/Todo";
+import SignIn from "./components/SignIn";
+import authReducer from "./reducer/userActions/AuthReducer";
 
 const theme = {
   colors: {
@@ -29,11 +32,12 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
+  const [{ user }, dispatch] = useReducer(authReducer, authReducer.initialState);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <div className="App">
-        <Todo />
+        {user ? <Todo /> : <SignIn dispatch={dispatch} />}
         <Author />
       </div>
     </ThemeProvider>
