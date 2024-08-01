@@ -19,10 +19,7 @@ const createTodo = async (req, res) => {
     // const newTodo = new Todos(dbTodo);
     // await newTodo.save();
     const newTodo = await Todos.create(dbTodo);
-    res.status(201).send({
-      newTodo,
-      
-    });
+    res.status(201).send(newTodo);
   } catch (error) {
     res.status(500).send({ message: error.message });
   }
