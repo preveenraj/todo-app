@@ -1,18 +1,15 @@
 import { useReducer } from "react";
+import axios from "axios";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
+
 import Author from "./components/Author";
 import Todo from "./components/Todo";
 import SignIn from "./components/SignIn";
 import authReducer from "./reducer/userActions/AuthReducer";
+import { theme } from "./utils";
 
-const theme = {
-  colors: {
-    background: "#5A639C",
-    primary: "#ef7360",
-    textPrimary: "#538392",
-    textSecondary: "#240750",
-  },
-};
+// set axios base url
+axios.defaults.baseURL = "http://localhost:8000";
 
 const GlobalStyle = createGlobalStyle`
 * {

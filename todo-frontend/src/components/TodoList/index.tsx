@@ -1,5 +1,5 @@
 import React from "react";
-import axios from "../../axios";
+import axios from "axios";
 
 import { ListContainer, Row, Text, DeleteButton } from "./styles";
 
@@ -28,12 +28,11 @@ const TodoList = ({ todos, fetchData }: TodoListProps) => {
       console.log(error);
     }
   };
-
   return (
     <div>
       <ListContainer>
         {todos?.map((todo) => (
-          <Row key={todo._id}>
+          <Row key={todo._id} data-testid="todo-list-item">
             <Text
               onClick={() => updateTodo(todo._id, todo.completed)}
               isCompleted={todo.completed}

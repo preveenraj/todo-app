@@ -21,13 +21,14 @@ const Form = ({ input, setInput, addTodo }: FormProps) => {
   return (
     <FormContainer onSubmit={handleSubmit}>
       <Input
+        data-testid="input"
         autoFocus
         type="text"
         value={input}
         role="input"
         onChange={handleChange}
       />
-      <Button type="submit">Add</Button>
+      <Button type="submit" data-testid="add-todo">Add</Button>
     </FormContainer>
   );
 };

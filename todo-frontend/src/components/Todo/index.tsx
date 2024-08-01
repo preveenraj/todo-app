@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react";
-import axios from "../../axios";
+import axios from "axios";
 
 import { Container, Heading } from "./styles";
 import Form from "../Form";
