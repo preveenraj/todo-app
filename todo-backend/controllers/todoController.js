@@ -5,7 +5,6 @@ const Todos = require("../dbTodos");
 const getTodos = async (req, res) => {
   try {
     const allTodos = await Todos.find({}).sort({ createdAt: -1 });
-    console.log("🚀 ~ getTodos ~ allTodos:", allTodos)
     res.status(200).send(allTodos);
   } catch (error) {
     res.status(400).send({ message: error.message });

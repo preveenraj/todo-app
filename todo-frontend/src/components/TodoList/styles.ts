@@ -1,7 +1,7 @@
 import styled, { CSSProperties } from "styled-components";
 
 interface TextProperties {
-  isCompleted?: boolean;
+  $isCompleted?: boolean;
 }
 
 export const ListContainer = styled.ul`
@@ -28,8 +28,8 @@ export const Text = styled.span<TextProperties>`
     text-transform: capitalize;
   }
 
-  color: ${(props) => (props.isCompleted ? props.theme.colors.textPrimary : props.theme.colors.textSecondary)};
-  text-decoration: ${(props) => (props.isCompleted ? "line-through" : "none")};
+  color: ${(props) => (props.$isCompleted ? props.theme.colors.textPrimary : props.theme.colors.textSecondary)};
+  text-decoration: ${(props) => (props.$isCompleted ? "line-through" : "none")};
 `;
 
 export const DeleteButton = styled.button<{ onClick: (id: number) => void }>`

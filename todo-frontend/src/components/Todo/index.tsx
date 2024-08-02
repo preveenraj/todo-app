@@ -6,6 +6,7 @@ import Form from "../Form";
 import TodoList from "../TodoList";
 import todoReducer from "../../reducer/todoActions/TodoReducer";
 import { ADD_TODO, SET_TODOS } from "../../reducer/todoActions/types";
+import { createTodo, getTodos } from "../../api";
 
 const Todo = () => {
   const [input, setInput] = useState("");
@@ -16,7 +17,7 @@ const Todo = () => {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get("/todos");
+      const data = await getTodos();
       dispatch({ type: SET_TODOS, payload: data });
     } catch (error: any) {
       console.log(error.message);
@@ -31,7 +32,7 @@ const Todo = () => {
         title: input,
         completed: false,
       };
-      const { data: todoAdded } = await axios.post("/todos", todoToAdd);
+      const todoAdded = await createTodo(todoToAdd);
       dispatch({
         type: ADD_TODO,
         payload: todoAdded,
