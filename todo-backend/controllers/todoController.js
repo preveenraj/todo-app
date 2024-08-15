@@ -1,12 +1,17 @@
 const mongoose = require("mongoose");
+const ObjectId = mongoose.Types.ObjectId;
 const Todos = require("../dbTodos");
 
 // Get Todos List
 const getTodos = async (req, res) => {
+  const userId = req.headers._id;
   try {
-    const allTodos = await Todos.find({}).sort({ createdAt: -1 });
+    const allTodos = await Todos.find({
+      userId,
+    }).sort({ createdAt: -1 });
     res.status(200).send(allTodos);
   } catch (error) {
+    console.log("🚀 ~ getTodos ~ error:", error)
     res.status(400).send({ message: error.message });
   }
 };
@@ -14,12 +19,15 @@ const getTodos = async (req, res) => {
 // Create a new Todo
 const createTodo = async (req, res) => {
   const dbTodo = req.body;
+  const userId = req.headers._id;
   try {
-    // const newTodo = new Todos(dbTodo);
-    // await newTodo.save();
-    const newTodo = await Todos.create(dbTodo);
+    const newTodo = await Todos.create({
+      ...dbTodo,
+      userId,
+    });
     res.status(201).send(newTodo);
   } catch (error) {
+    console.log("🚀 ~ createTodo ~ error:", error)
     res.status(500).send({ message: error.message });
   }
 };

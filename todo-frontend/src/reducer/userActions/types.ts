@@ -1,8 +1,8 @@
 export interface User {
-    id?: number;
+    _id: string;
+    firebaseUserId: string;
     name: string;
     email: string;
-    firebaseUserId: string;
 }
 
 // Type for the state of your todo app

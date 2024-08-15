@@ -12,6 +12,11 @@ const {
     deleteTodo
 } = require('./controllers/todoController');
 
+const {
+    signIn,
+    logout,
+} = require('./controllers/userController');
+
 // App config
 const app = express();
 
@@ -47,4 +52,7 @@ app.put('/todos/:id', updateTodo);
 
 // delete a todo
 app.delete('/todos/:id', deleteTodo);
+
+// login
+app.post('/signin', signIn);
 

@@ -7,6 +7,7 @@ import Todo from "./components/Todo";
 import SignIn from "./components/SignIn";
 import authReducer from "./reducer/userActions/AuthReducer";
 import { theme } from "./utils";
+import useAuth from "./hooks/auth";
 
 // set axios base url
 axios.defaults.baseURL = "http://localhost:8000";
@@ -29,6 +30,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function App() {
+  useAuth();
   const [{ user }, dispatch] = useReducer(authReducer, authReducer.initialState);
   return (
     <ThemeProvider theme={theme}>

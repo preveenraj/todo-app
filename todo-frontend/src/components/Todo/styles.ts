@@ -16,3 +16,14 @@ export const Heading = styled.h2`
 font-size: 1.5rem;
 color: ${(props) => props.theme.colors.textPrimary};
 `;
+
+export const LogoutButton = styled.button`
+border: 1px solid ${(props) => props.theme.colors.primary};
+position: fixed;
+top: 20px;
+right: 20px;
+color: ${(props) => props.theme.colors.primary};
+padding: 5px 15px;
+border-radius: 10px;
+cursor: pointer;
+`;

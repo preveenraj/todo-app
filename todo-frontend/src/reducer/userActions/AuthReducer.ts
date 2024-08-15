@@ -18,7 +18,7 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
             return {
                 ...state,
                 user: {
-                    id: action.payload.uid,
+                    _id: action.payload._id,
                     name: action.payload.displayName,
                     email: action.payload.email,
                     firebaseUserId: action.payload.uid,

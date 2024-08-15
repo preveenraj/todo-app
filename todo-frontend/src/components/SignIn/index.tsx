@@ -5,6 +5,7 @@ import { signInWithPopup } from "firebase/auth";
 import { Container, GoogleButton } from "./styles";
 
 import { AUTH_ERROR, AUTH_LOADING, AUTH_SUCCESS, AuthAction } from "../../reducer/userActions/types";
+import { signIn } from "../../api";
 
 const SignIn: React.FC<{
   dispatch: React.Dispatch<AuthAction>;
@@ -16,8 +17,16 @@ const SignIn: React.FC<{
     try {
       dispatch({ type: AUTH_LOADING });
       const result = await signInWithPopup(auth, provider);
-      dispatch({ type: AUTH_SUCCESS, payload: result.user });
-      localStorage.setItem("user", JSON.stringify(result.user));
+      const { user: dbUser } = await signIn(result.user);
+      const user = {
+        ...result.user,
+        ...dbUser,
+      };
+      dispatch({
+        type: AUTH_SUCCESS,
+        payload: user,
+      });
+      localStorage.setItem("user", JSON.stringify(user));
     } catch (error: any) {
       dispatch({ type: AUTH_ERROR, payload: error.toString() });
       // Handle sign-in error

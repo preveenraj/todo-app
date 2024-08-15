@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useState } from "react";
 import axios from "axios";
 
-import { Container, Heading } from "./styles";
+import { Container, Heading, LogoutButton } from "./styles";
 import Form from "../Form";
 import TodoList from "../TodoList";
 import todoReducer from "../../reducer/todoActions/TodoReducer";
@@ -52,10 +52,15 @@ const Todo = () => {
     window.location.reload();
   }
 
+  const { displayName, email } = JSON.parse(localStorage.getItem("user") || "{}");
+
   return (
     <Container>
+      <p>
+        {displayName ? `Welcome ${displayName}` : ""}
+      </p>
+      <LogoutButton onClick={handleLogOut}>Log Out</LogoutButton>
       <Heading>My Tasks</Heading>
-      <button onClick={handleLogOut}>Log Out</button>
       <Form input={input} setInput={setInput} addTodo={addTodo} />
       <TodoList todos={todos} fetchData={fetchData} />
     </Container>
