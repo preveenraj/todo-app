@@ -1,5 +1,4 @@
-import React, { useEffect, useReducer, useState } from "react";
-import axios from "axios";
+import { useEffect, useReducer, useState } from "react";
 
 import { Container, Heading, LogoutButton } from "./styles";
 import Form from "../Form";
@@ -52,12 +51,12 @@ const Todo = () => {
     window.location.reload();
   }
 
-  const { displayName, email } = JSON.parse(localStorage.getItem("user") || "{}");
+  const { displayName } = JSON.parse(localStorage.getItem("user") || "{}");
 
   return (
     <Container>
       <p>
-        {displayName ? `Welcome ${displayName}` : ""}
+        {displayName ? `Welcomes ${displayName}` : ""}
       </p>
       <LogoutButton onClick={handleLogOut}>Log Out</LogoutButton>
       <Heading>My Tasks</Heading>

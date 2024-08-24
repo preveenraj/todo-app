@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { User } from './reducer/userActions/types';
 
 const API_BASE_URL = "http://localhost:8000";
 

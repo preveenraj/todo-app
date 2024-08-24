@@ -1,6 +1,6 @@
 todo-frontend/node_modules
 todo-frontend/.env
-todo-frontend/build
+todo-frontend/dist
 
 todo-backend/node_modules
 todo-backend/.env

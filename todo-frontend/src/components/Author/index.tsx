@@ -1,5 +1,3 @@
-import React from "react";
-
 import { AuthorContainer } from "./styles";
 
 const Author = () => {

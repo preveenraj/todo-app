@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { auth, provider } from "../../firebaseConfig.js";
+import { auth, provider } from "../../firebaseConfig";
 import { signInWithPopup } from "firebase/auth";
 
 import { Container, GoogleButton } from "./styles";
