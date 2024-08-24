@@ -5,6 +5,7 @@ const Todos = require("../dbTodos");
 // Get Todos List
 const getTodos = async (req, res) => {
   const userId = req.headers._id;
+  console.log("🚀 ~ getTodos ~ userId:", userId)
   try {
     const allTodos = await Todos.find({
       userId,
