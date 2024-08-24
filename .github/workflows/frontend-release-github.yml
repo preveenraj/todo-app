@@ -44,7 +44,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          VITE_API_KEY: ${{ secrets.VITE_API_KEY }}
+          VITE_APP_API_KEY: ${{ secrets.VITE_APP_API_KEY }}
           VITE_APP_AUTH_DOMAIN: ${{ secrets.VITE_APP_AUTH_DOMAIN }}
           VITE_APP_PROJECT_ID: ${{ secrets.VITE_APP_PROJECT_ID }}
           VITE_APP_STORAGE_BUCKET: ${{ secrets.VITE_APP_STORAGE_BUCKET }}
