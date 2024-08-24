@@ -10,7 +10,7 @@ import { theme } from "./utils";
 import useAuth from "./hooks/auth";
 
 // set axios base url
-axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = import.meta.env.VITE_DOMAIN;
 
 const GlobalStyle = createGlobalStyle`
 * {
