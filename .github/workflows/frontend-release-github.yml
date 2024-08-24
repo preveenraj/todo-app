@@ -37,7 +37,6 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-        working-directory: ./todo-frontend
       - name: Install dependencies
         run: npm ci
         working-directory: ./todo-frontend
