@@ -4,3 +4,4 @@ todo-frontend/dist
 
 todo-backend/node_modules
 todo-backend/.env
+*.pem
