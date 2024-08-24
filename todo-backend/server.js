@@ -40,6 +40,7 @@ mongoose.connect(connectionURL)
 .catch(err => console.log(err));
 
 // API Endpoints
+app.get('/', (req, res) => res.status(200).send('Your Server is working!'));
 
 // get todos list
 app.get('/todos', getTodos);
