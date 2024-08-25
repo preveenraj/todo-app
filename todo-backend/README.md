@@ -48,4 +48,9 @@ sudo nano /etc/nginx/sites-available/default
 sudo systemctl restart nginx
 ```
 
+## Download letsencrypt files to local
+```
+scp -i /path/to/your/private-key.pem -r ubuntu@example_ip:/etc/letsencrypt ~/Downloads/
+ ```
+
 
