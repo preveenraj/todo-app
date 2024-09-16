@@ -1,1 +1,1 @@
-web: npm install && npm start;
+web: cd todo-backend && npm install && npm start;
