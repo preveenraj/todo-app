@@ -1,0 +1,13 @@
+{
+    "name": "todo-app",
+    "version": "1.0.0",
+    "description": "A simple todo app",
+    "main": "index.js",
+    "author": "Your Name",
+    "license": "MIT",
+    "engines": {
+        "node": "20.11",
+        "npm": "9.x",
+        "yarn": "1.22.x"
+    }
+}
