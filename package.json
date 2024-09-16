@@ -6,7 +6,7 @@
     "author": "Your Name",
     "license": "MIT",
     "engines": {
-        "node": "18.18",
+        "node": "18.19.1",
         "npm": "9.x",
         "yarn": "1.22.x"
     }
