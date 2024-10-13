@@ -2,6 +2,8 @@ import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useEffect, useState } from "react";
 import { getTodos } from "@/services";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store";
 
 // const todos = [
 //   {
@@ -13,13 +15,17 @@ import { getTodos } from "@/services";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
+  const user = useSelector((state: RootState) => state.user);
+
   useEffect(() => {
-    const fetchTodos = async () => {
-      const todos = await getTodos();
-      setTodos(todos);
-    };
-    fetchTodos();
-  }, []);
+    if (user?._id) {
+      const fetchTodos = async () => {
+        const todos = await getTodos();
+        setTodos(todos);
+      };
+      fetchTodos();
+    }
+  }, [user]);
 
   return (
     <Table>
