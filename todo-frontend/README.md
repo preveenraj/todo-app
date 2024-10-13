@@ -1,61 +1,50 @@
+# React + TypeScript + Vite
 
-# Todo Frontend
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-This is the frontend application for the Todo App. 
+Currently, two official plugins are available:
 
-## Table of Contents
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-- [Features](#features)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+## Expanding the ESLint configuration
 
-## Features
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Add, edit, and delete tasks
-- Mark tasks as completed
-- Responsive design for mobile and desktop
+- Configure the top-level `parserOptions` property like this:
 
-## Installation
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
-To get started with the project, follow these steps:
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-1. **Clone the repository**:
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
 
-    ```sh
-    git clone https://github.com/yourusername/todo-frontend.git
-    cd todo-frontend
-    ```
-
-2. **Install dependencies**:
-
-    ```sh
-    npm install
-    ```
-
-3. **Start the development server**:
-
-    ```sh
-    npm run dev
-    ```
-
-    The application will be available at `http://localhost:5173`.
-
-## Usage
-
-Once the development server is running, you can open your browser and navigate to `http://localhost:5173` to start using the Todo App.
-
-### Available Scripts
-
-- `npm run build`: Builds the app for production.
-
-## Contributing
-
-We welcome contributions to improve the Todo App. To contribute, follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your feature or bugfix.
-3. Make your changes and commit them.
-4. Push your changes to your fork.
-5. Create a pull request to the main repository.
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
+```

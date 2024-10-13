@@ -1,45 +1,28 @@
-import { useReducer } from "react";
-import axios from "axios";
-import { ThemeProvider, createGlobalStyle } from "styled-components";
-
-import Author from "./components/Author";
-import Todo from "./components/Todo";
+import "./App.css";
 import SignIn from "./components/SignIn";
-import authReducer from "./reducer/userActions/AuthReducer";
-import { theme } from "./utils";
+import TodoList from "./components/TodoList";
+import { Input } from "./components/ui/input";
 import useAuth from "./hooks/auth";
 
-// set axios base url
-axios.defaults.baseURL = import.meta.env.VITE_DOMAIN;
-
-const GlobalStyle = createGlobalStyle`
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-  .App {
-    margin: 0;
-  padding: 50px;
-  background-color: ${(props) => props.theme.colors.background};
-  font-weight: 500;
-  font-size: 1.2rem;
-  height: 100vh;
-  }
-`;
 
 function App() {
   useAuth();
-  const [{ user }, dispatch] = useReducer(authReducer, authReducer.initialState);
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <div className="App">
-        {user ? <Todo /> : <SignIn dispatch={dispatch} />}
-        <Author />
+    <main className="h-screen w-screen bg-primary flex justify-center items-center font-lato">
+      {/* Container */}
+      <div className="container h-screen flex flex-col gap-8 p-4 xl:w-1/3">
+        {/* Title: Todo App */}
+        <h1 className="text-4xl font-semibold mt-10 text-blue-300">T-O-D-O</h1>
+        {/* Todo Input */}
+        <Input
+          placeholder="Add a new task"
+          className="p-2 bg-gray-200 rounded"
+          autoFocus
+        />
+        <SignIn />
+       <TodoList />
       </div>
-    </ThemeProvider>
+    </main>
   );
 }
 
