@@ -40,7 +40,7 @@ export const deleteTodo = async (id: number) => {
     }
 };
 
-export const signIn = async (user) => {
+export const signIn = async (user: any) => {
     try {
         const response = await api.post('/signin', { user });
         const { user: dbUser } = response.data;

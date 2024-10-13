@@ -5,7 +5,7 @@ import { signInWithPopup } from "firebase/auth";
 import { signIn } from "../services";
 import { Button } from "./ui/button";
 
-const SignIn: React.FC<> = () => {
+const SignIn: React.FC = () => {
   const handleSignIn = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
