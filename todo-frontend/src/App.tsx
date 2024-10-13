@@ -4,7 +4,6 @@ import TodoList from "./components/TodoList";
 import { Input } from "./components/ui/input";
 import useAuth from "./hooks/auth";
 
-
 function App() {
   useAuth();
   return (
